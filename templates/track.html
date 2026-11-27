@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Public Tracking</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .search-box { margin-bottom: 20px; }
+        input { padding: 8px; width: 250px; }
+        button { padding: 8px 15px; background: green; color: white; border: none; cursor: pointer; }
+        .error { color: red; font-weight: bold; }
+        table { width: 50%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h2>Track Your Parcel</h2>
+    
+    <div class="search-box">
+        <form action="" method="GET" onsubmit="event.preventDefault(); window.location.href = '/track/' + document.getElementById('tracking_input').value;">
+            <input type="text" id="tracking_input" placeholder="Enter Tracking Number (e.g. TRK-XXXX)" required>
+            <button type="submit">Track</button>
+        </form>
+    </div>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if history %}
+        <h3>Status History for: {{ tracking_number }}</h3>
+        <table>
+            <tr>
+                <th>Status</th>
+                <th>Date & Time</th>
+            </tr>
+            {% for row in history %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>

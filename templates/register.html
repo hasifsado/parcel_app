@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register Parcel</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-weight: bold; }
+        input { padding: 8px; width: 300px; }
+        button { padding: 10px 15px; background: blue; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h2>Register a New Parcel</h2>
+    <form action="/register" method="POST">
+        <div class="form-group">
+            <label>Recipient Name:</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="form-group">
+            <label>Recipient Phone:</label>
+            <input type="text" name="phone" required>
+        </div>
+        <div class="form-group">
+            <label>Recipient Address:</label>
+            <input type="text" name="address" required>
+        </div>
+        <div class="form-group">
+            <label>Parcel Weight (kg):</label>
+            <input type="number" step="0.1" name="weight" required>
+        </div>
+        <button type="submit">Register Parcel</button>
+    </form>
+</body>
+</html>
